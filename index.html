@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sweet Bites | Dessert Shop</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Header and Navigation -->
+<header>
+<nav class="navbar">
+<a href="#home" class="logo">Sweet Bites</a>
+<ul class="nav-links">
+<li><a href="#home">Home</a></li>
+<li><a href="#products">Products</a></li>
+<li><a href="#about">About</a></li>
+</ul>
+<div class="cart">Cart (<span id="cart-count">0</span>)</div>
+</nav>
+</header>
+
+<main id="home">
+<section class="intro">
+<h1>Welcome to Sweet Bites!</h1>
+<p>Discover your favorite treats, for all your sweet moments.</p>
+</section>
+
+<section id="products">
+<h2>Our Desserts</h2>
+
+<div class="product-grid">
+<article class="card">
+<div class="card-img"><img src="macarons.jpg" alt="French Macarons"></div>
+<div class="card-content">
+<h3>French Macarons</h3>
+<p>Delicate, colourful cookies with a creamy filling.</p>
+<p class="price">Rs. 450</p>
+<button class="add-to-cart">Add to Cart</button>
+</div>
+</article>
+
+<article class="card">
+<div class="card-img"><img src="sheet-cakes.jpg" alt="Sheet Cakes"></div>
+<div class="card-content">
+<h3>Sheet Cakes</h3>
+<p>Soft and delicious cake, perfect for sharing.</p>
+<p class="price">Rs. 1,200</p>
+<button class="add-to-cart">Add to Cart</button>
+</div>
+</article>
+
+<article class="card">
+<div class="card-img"><img src="oreo-pudding.jpg" alt="Oreo Pudding"></div>
+<div class="card-content">
+<h3>Oreo Pudding</h3>
+<p>A creamy chocolate dessert with crunchy Oreo pieces.</p>
+<p class="price">Rs. 350</p>
+<button class="add-to-cart">Add to Cart</button>
+</div>
+</article>
+
+<article class="card">
+<div class="card-img"><img src="donuts.jpg" alt="Assorted Donuts"></div>
+<div class="card-content">
+<h3>Assorted Donuts</h3>
+<p>Fresh donuts topped with sweet and colourful icing.</p>
+<p class="price">Rs. 250</p>
+<button class="add-to-cart">Add to Cart</button>
+</div>
+</article>
+
+<article class="card">
+<div class="card-img"><img src="mochi.jpg" alt="Japanese Mochi"></div>
+<div class="card-content">
+<h3>Japanese Mochi</h3>
+<p>Soft, chewy rice cakes with a sweet filling.</p>
+<p class="price">Rs. 500</p>
+<button class="add-to-cart">Add to Cart</button>
+</div>
+</article>
+
+<article class="card">
+<div class="card-img"><img src="tanghulu.jpg" alt="Fruit Tanghulu"></div>
+<div class="card-content">
+<h3>Fruit Tanghulu</h3>
+<p>Fresh fruit covered in a crunchy sugar coating.</p>
+<p class="price">Rs. 300</p>
+<button class="add-to-cart">Add to Cart</button>
+</div>
+</article>
+
+<article class="card">
+<div class="card-img"><img src="tiramisu.jpg" alt="Tiramisu"></div>
+<div class="card-content">
+<h3>Tiramisu</h3>
+<p>Coffee-soaked layers with mascarpone cream.</p>
+<p class="price">Rs. 750</p>
+<button class="add-to-cart">Add to Cart</button>
+</div>
+</article>
+
+<article class="card">
+<div class="card-img"><img src="cookies.jpg" alt="Chocolate Chip Cookies"></div>
+<div class="card-content">
+<h3>Chocolate Chip Cookies</h3>
+<p>Golden, chewy cookies packed with chocolate.</p>
+<p class="price">Rs. 350</p>
+<button class="add-to-cart">Add to Cart</button>
+</div>
+</article>
+
+<article class="card">
+<div class="card-img"><img src="blueberry-mini-cakes.jpg" alt="Blueberry Mini Cakes"></div>
+<div class="card-content">
+<h3>Blueberry Mini Cakes</h3>
+<p>Small cakes topped with fresh blueberries.</p>
+<p class="price">Rs. 600</p>
+<button class="add-to-cart">Add to Cart</button>
+</div>
+</article>
+</div>
+</section>
+
+<section id="about" class="about">
+<h2>About Sweet Bites</h2>
+<p>We bring together delightful desserts for every occasion. Find your favorite treat and enjoy something sweet!</p>
+</section>
+</main>
+
+<!-- Footer -->
+<footer>
+<p>&copy; 2026 Sweet Bites. All rights reserved.</p>
+</footer>
+
+<!-- Cart Counter -->
+<script>
+let cartCount = 0;
+const cartCounter = document.getElementById("cart-count");
+const cartButtons = document.querySelectorAll(".add-to-cart");
+
+cartButtons.forEach(function(button) {
+button.addEventListener("click", function() {
+cartCount++;
+cartCounter.textContent = cartCount;
+});
+});
+</script>
+
+</body>
+</html>
