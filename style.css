@@ -8,20 +8,35 @@ body {
 font-family: Arial, sans-serif;
 background-color: #fff5f8;
 color: #333333;
+padding: 20px;
 }
 
 html {
 scroll-behavior: smooth;
 }
 
-/* Navigation Bar */
-.navbar {
+/* Dashboard Grid Layout */
+.dashboard-container {
+display: grid;
+grid-template-columns: 220px 1fr 1fr;
+grid-template-rows: 70px minmax(300px, auto) auto 50px;
+grid-template-areas:
+"header header header"
+"sidebar main main"
+"sidebar widget-a widget-b"
+"footer footer footer";
+gap: 15px;
+}
+
+/* Header and Navigation Bar */
+.header {
+grid-area: header;
 background: #c2185b;
 color: white;
 display: flex;
 align-items: center;
 justify-content: space-between;
-padding: 15px 30px;
+padding: 0 20px;
 }
 
 .logo {
@@ -46,11 +61,56 @@ text-decoration: none;
 text-decoration: underline;
 }
 
-.cart {
-background: white;
+/* Sidebar */
+.sidebar {
+grid-area: sidebar;
+background: #ffffff;
+padding: 20px;
+border: 1px solid #ddd;
+}
+
+.sidebar-label {
 color: #c2185b;
-padding: 8px 15px;
 font-weight: bold;
+margin: 10px 0;
+}
+
+.sidebar ul {
+list-style: none;
+margin-bottom: 20px;
+}
+
+.sidebar li {
+margin-bottom: 6px;
+}
+
+.sidebar a {
+display: block;
+padding: 10px 12px;
+color: #333333;
+text-decoration: none;
+border-left: 4px solid transparent;
+transition: background 0.3s, border-color 0.3s;
+}
+
+/* Sidebar hover effect */
+.sidebar a:hover {
+background: #fce4ec;
+border-left-color: #c2185b;
+}
+
+.sidebar a.active {
+background: #fce4ec;
+border-left-color: #c2185b;
+font-weight: bold;
+}
+
+/* Main Content */
+.main-content {
+grid-area: main;
+background: #ffffff;
+padding: 20px;
+border: 1px solid #ddd;
 }
 
 /* Intro and Sections */
@@ -64,7 +124,7 @@ margin-bottom: 10px;
 }
 
 #products {
-padding: 20px 30px;
+padding: 10px 0;
 }
 
 #products h2 {
@@ -83,7 +143,7 @@ gap: 20px;
 background: #ffffff;
 border: 1px solid #ddd;
 text-align: center;
-transition: transform 0.3s, box-shadow 0.3s;
+transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
 }
 
 /* Hover animation */
@@ -101,12 +161,22 @@ overflow: hidden;
 width: 100%;
 height: 100%;
 object-fit: cover;
+cursor: pointer;
 transition: transform 0.4s;
 }
 
 /* Image zooms slightly on hover */
 .card:hover .card-img img {
 transform: scale(1.1);
+}
+
+/* Without Pictures view (sidebar option): images hidden, hover effect stays */
+.product-grid.no-images .card-img {
+display: none;
+}
+
+.product-grid.no-images .card:hover {
+background: #fce4ec;
 }
 
 .card-content {
@@ -139,14 +209,74 @@ button:hover {
 background: #880e4f;
 }
 
-.about {
-text-align: center;
-padding: 40px 20px;
+/* Widgets */
+.widget-a {
+grid-area: widget-a;
+background: #e3f2fd;
+padding: 20px;
+border: 1px solid #bbdefb;
 }
 
-footer {
+.widget-b {
+grid-area: widget-b;
+background: #e8f5e9;
+padding: 20px;
+border: 1px solid #c8e6c9;
+}
+
+.widget-a h2,
+.widget-b h2 {
+margin-bottom: 15px;
+}
+
+.widget-a p,
+.widget-b p {
+margin-bottom: 10px;
+}
+
+.cart-number {
+font-size: 20px;
+font-weight: bold;
+}
+
+/* Footer */
+.footer {
+grid-area: footer;
 background: #333333;
 color: white;
 text-align: center;
-padding: 15px;
+line-height: 50px;
+}
+
+/* Image Viewer (click a picture to open it) */
+.image-viewer {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.85);
+align-items: center;
+justify-content: center;
+z-index: 1000;
+}
+
+.image-viewer img {
+max-width: 90%;
+max-height: 85%;
+border: 4px solid white;
+}
+
+.close-viewer {
+position: absolute;
+top: 20px;
+right: 30px;
+color: white;
+font-size: 40px;
+cursor: pointer;
+}
+
+.close-viewer:hover {
+color: #f8bbd0;
 }

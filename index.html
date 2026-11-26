@@ -8,20 +8,36 @@
 </head>
 <body>
 
+<div class="dashboard-container">
+
 <!-- Header and Navigation -->
-<header>
-<nav class="navbar">
+<header class="header">
 <a href="#home" class="logo">Sweet Bites</a>
 <ul class="nav-links">
 <li><a href="#home">Home</a></li>
 <li><a href="#products">Products</a></li>
 <li><a href="#about">About</a></li>
 </ul>
-<div class="cart">Cart (<span id="cart-count">0</span>)</div>
-</nav>
 </header>
 
-<main id="home">
+<!-- Sidebar -->
+<aside class="sidebar">
+<p class="sidebar-label">View Options</p>
+<ul>
+<li><a href="#products" id="view-grid" class="active">With Pictures</a></li>
+<li><a href="#products" id="view-list">Without Pictures</a></li>
+</ul>
+
+<p class="sidebar-label">My Account</p>
+<ul>
+<li><a href="#about">Contact Us</a></li>
+<li><a href="#">Offers</a></li>
+<li><a href="#">My Orders</a></li>
+<li><a href="#">Log Out</a></li>
+</ul>
+</aside>
+
+<main class="main-content" id="home">
 <section class="intro">
 <h1>Welcome to Sweet Bites!</h1>
 <p>Discover your favorite treats, for all your sweet moments.</p>
@@ -30,14 +46,14 @@
 <section id="products">
 <h2>Our Desserts</h2>
 
-<div class="product-grid">
+<div class="product-grid" id="product-grid">
 <article class="card">
 <div class="card-img"><img src="macarons.jpg" alt="French Macarons"></div>
 <div class="card-content">
 <h3>French Macarons</h3>
 <p>Delicate, colourful cookies with a creamy filling.</p>
 <p class="price">Rs. 450</p>
-<button class="add-to-cart">Add to Cart</button>
+<button class="add-to-cart" data-name="French Macarons">Add to Cart</button>
 </div>
 </article>
 
@@ -47,7 +63,7 @@
 <h3>Sheet Cakes</h3>
 <p>Soft and delicious cake, perfect for sharing.</p>
 <p class="price">Rs. 1,200</p>
-<button class="add-to-cart">Add to Cart</button>
+<button class="add-to-cart" data-name="Sheet Cakes">Add to Cart</button>
 </div>
 </article>
 
@@ -57,7 +73,7 @@
 <h3>Oreo Pudding</h3>
 <p>A creamy chocolate dessert with crunchy Oreo pieces.</p>
 <p class="price">Rs. 350</p>
-<button class="add-to-cart">Add to Cart</button>
+<button class="add-to-cart" data-name="Oreo Pudding">Add to Cart</button>
 </div>
 </article>
 
@@ -67,7 +83,7 @@
 <h3>Assorted Donuts</h3>
 <p>Fresh donuts topped with sweet and colourful icing.</p>
 <p class="price">Rs. 250</p>
-<button class="add-to-cart">Add to Cart</button>
+<button class="add-to-cart" data-name="Assorted Donuts">Add to Cart</button>
 </div>
 </article>
 
@@ -77,7 +93,7 @@
 <h3>Japanese Mochi</h3>
 <p>Soft, chewy rice cakes with a sweet filling.</p>
 <p class="price">Rs. 500</p>
-<button class="add-to-cart">Add to Cart</button>
+<button class="add-to-cart" data-name="Japanese Mochi">Add to Cart</button>
 </div>
 </article>
 
@@ -87,7 +103,7 @@
 <h3>Fruit Tanghulu</h3>
 <p>Fresh fruit covered in a crunchy sugar coating.</p>
 <p class="price">Rs. 300</p>
-<button class="add-to-cart">Add to Cart</button>
+<button class="add-to-cart" data-name="Fruit Tanghulu">Add to Cart</button>
 </div>
 </article>
 
@@ -97,7 +113,7 @@
 <h3>Tiramisu</h3>
 <p>Coffee-soaked layers with mascarpone cream.</p>
 <p class="price">Rs. 750</p>
-<button class="add-to-cart">Add to Cart</button>
+<button class="add-to-cart" data-name="Tiramisu">Add to Cart</button>
 </div>
 </article>
 
@@ -107,7 +123,7 @@
 <h3>Chocolate Chip Cookies</h3>
 <p>Golden, chewy cookies packed with chocolate.</p>
 <p class="price">Rs. 350</p>
-<button class="add-to-cart">Add to Cart</button>
+<button class="add-to-cart" data-name="Chocolate Chip Cookies">Add to Cart</button>
 </div>
 </article>
 
@@ -117,34 +133,109 @@
 <h3>Blueberry Mini Cakes</h3>
 <p>Small cakes topped with fresh blueberries.</p>
 <p class="price">Rs. 600</p>
-<button class="add-to-cart">Add to Cart</button>
+<button class="add-to-cart" data-name="Blueberry Mini Cakes">Add to Cart</button>
 </div>
 </article>
 </div>
 </section>
-
-<section id="about" class="about">
-<h2>About Sweet Bites</h2>
-<p>We bring together delightful desserts for every occasion. Find your favorite treat and enjoy something sweet!</p>
-</section>
 </main>
 
+<!-- Widget A: Cart -->
+<section class="widget-a" id="cart">
+<h2>My Cart</h2>
+<p class="cart-number">Items in cart: <span id="cart-count">0</span></p>
+<p>Last added: <span id="last-item">None</span></p>
+<button id="clear-cart">Clear Cart</button>
+</section>
+
+<!-- Widget B: About -->
+<section class="widget-b" id="about">
+<h2>About Sweet Bites</h2>
+<p>We bring together delightful desserts for every occasion. Find your favorite treat and enjoy something sweet!</p>
+<p>Contact us: sweetbites@example.com</p>
+</section>
+
 <!-- Footer -->
-<footer>
-<p>&copy; 2026 Sweet Bites. All rights reserved.</p>
-</footer>
+<footer class="footer">&copy; 2026 Sweet Bites. All rights reserved.</footer>
+
+</div>
+
+<!-- Image Viewer (opens when a picture is clicked) -->
+<div id="image-viewer" class="image-viewer">
+<span id="close-viewer" class="close-viewer">&times;</span>
+<img id="expanded-image" src="" alt="Expanded dessert image">
+</div>
 
 <!-- Cart Counter -->
 <script>
 let cartCount = 0;
 const cartCounter = document.getElementById("cart-count");
+const lastItem = document.getElementById("last-item");
 const cartButtons = document.querySelectorAll(".add-to-cart");
 
 cartButtons.forEach(function(button) {
 button.addEventListener("click", function() {
 cartCount++;
 cartCounter.textContent = cartCount;
+lastItem.textContent = button.dataset.name;
 });
+});
+
+document.getElementById("clear-cart").addEventListener("click", function() {
+cartCount = 0;
+cartCounter.textContent = cartCount;
+lastItem.textContent = "None";
+});
+</script>
+
+<!-- Sidebar View Options (with / without pictures) -->
+<script>
+const productGrid = document.getElementById("product-grid");
+const viewGrid = document.getElementById("view-grid");
+const viewList = document.getElementById("view-list");
+
+viewGrid.addEventListener("click", function() {
+productGrid.classList.remove("no-images");
+viewGrid.classList.add("active");
+viewList.classList.remove("active");
+});
+
+viewList.addEventListener("click", function() {
+productGrid.classList.add("no-images");
+viewList.classList.add("active");
+viewGrid.classList.remove("active");
+});
+</script>
+
+<!-- Image Viewer Script -->
+<script>
+const productImages = document.querySelectorAll(".card img");
+const imageViewer = document.getElementById("image-viewer");
+const expandedImage = document.getElementById("expanded-image");
+const closeViewer = document.getElementById("close-viewer");
+
+productImages.forEach(function(image) {
+image.addEventListener("click", function() {
+expandedImage.src = image.src;
+expandedImage.alt = image.alt;
+imageViewer.style.display = "flex";
+});
+});
+
+closeViewer.addEventListener("click", function() {
+imageViewer.style.display = "none";
+});
+
+imageViewer.addEventListener("click", function(event) {
+if (event.target === imageViewer) {
+imageViewer.style.display = "none";
+}
+});
+
+document.addEventListener("keydown", function(event) {
+if (event.key === "Escape") {
+imageViewer.style.display = "none";
+}
 });
 </script>
 
